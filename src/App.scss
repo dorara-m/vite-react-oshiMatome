@@ -1,0 +1,115 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    input {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      &:focus {
+        outline: none;
+        border-color: #646cff;
+      }
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background-color: #1a1a1a;
+      color: #fff;
+      cursor: pointer;
+      transition: border-color 0.25s;
+      &:hover {
+        border-color: #646cff;
+      }
+      &:focus,
+      &:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+      }
+    }
+  }
+}
+
+.list {
+  margin-top: 50px;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // justify-content: center;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+      }
+      .image {
+        width: 197px;
+        height: 197px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .name {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+      .name_en {
+        margin-top: 0.2rem;
+        font-size: 1.2rem;
+        color: #333;
+      }
+      .description {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        color: #666;
+        // textareaの改行を反映⇣
+        white-space: pre-wrap;
+      }
+    }
+  }
+}

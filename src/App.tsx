@@ -1,6 +1,5 @@
-import { useCallback, useState } from "react";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { useState } from "react";
+import "./App.scss";
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -8,31 +7,10 @@ function App() {
     setShowPopup(!showPopup);
   };
 
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "推し1",
-  //     imageUrl: "https://placehold.jp/150x150.png",
-  //     description: "推し1の説明",
-  //     externalLink: ["https://twitter.com/", "https://www.youtube.com/"],
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "推し2",
-  //     imageUrl: "https://placehold.jp/150x150.png",
-  //     description: "推し2の説明",
-  //     externalLink: ["https://twitter.com/", "https://www.youtube.com/"],
-  //   },
-  // ];
-  // const dataType = {
-  //   id: String,
-  //   name: String,
-  //   imageUrl: String,
-  //   description: String,
-  //   externalLink: String
-  // }
   const [newOshi, setNewOshi] = useState({
+    id: 0,
     name: "",
+    name_en: "",
     imageUrl: "",
     description: "",
     externalLink: [],
@@ -52,14 +30,16 @@ function App() {
     const lsData = localStorage.getItem(key);
     return lsData ? JSON.parse(lsData) : null;
   };
+  // 一覧のデータstate
   const [oshiList, setOshiList] = useState(getLocalStorage("oshiList") || []);
+  // 送信したときの挙動
   const handleSubmit = (event: any) => {
     event.preventDefault();
     console.log(newOshi);
     console.log(oshiList);
-    // ⇣⇣動いてる？？
-    setOshiList([...oshiList, newOshi]);
-    // ここで確認しても、oshiListが更新されない、、
+    // ここでoshiのidを振る（簡易ver
+    newOshi.id = oshiList.length + 1;
+    oshiList.push(newOshi);
     console.log(oshiList);
     setLocalStorage("oshiList", oshiList);
     togglePopup();
@@ -69,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <div className="wrap">
-        <h1>OshiMatome</h1>
+        <h1>Oshi MATOME</h1>
         <button onClick={togglePopup}>新規追加</button>
         <div className="list">
           <ul>
@@ -81,6 +61,7 @@ function App() {
                       <img src={item.imageUrl} alt={`${item.name}の画像`} />
                     </div>
                     <div className="name">{item.name}</div>
+                    <div className="name_en">{item.name_en}</div>
                     <div className="description">{item.description}</div>
                   </a>
                 </li>
@@ -97,6 +78,13 @@ function App() {
                   type="text"
                   name="name"
                   placeholder="名前"
+                  onChange={handleChange}
+                  autoComplete="off"
+                />
+                <input
+                  type="text"
+                  name="name_en"
+                  placeholder="英語名"
                   onChange={handleChange}
                   autoComplete="off"
                 />
