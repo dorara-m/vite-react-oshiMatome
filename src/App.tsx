@@ -109,7 +109,7 @@ function App() {
                   id=""
                   cols={30}
                   rows={10}
-                  placeholder="外部リンクをコンマ区切りで（※未実装なので現状ただのテキストエリア）"
+                  placeholder="※実装途中のため表示されません"
                   onChange={handleChange}
                   autoComplete="off"
                 ></textarea>

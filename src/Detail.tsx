@@ -10,13 +10,15 @@ const Detail: React.FunctionComponent = () => {
     <div className="App">
       <h1>Oshi Detail</h1>
       <div className="detail-grid">
+        {/* 詳細では画像がフルサイズで表示されるようにして、一覧では頭から200pxの正方形カットした部分だけ表示、みたいにしたい */}
         <img src={pageData.imageUrl} alt={pageData.name} />
         <div className="name">{pageData.name}</div>
+        <div className="name_en">{pageData.name_en}</div>
         <p>{pageData.description}</p>
       </div>
 
       <Link to="/" className="toTop">
-        <p>To Top Page</p>
+        <button>一覧に戻る</button>
       </Link>
     </div>
   );
