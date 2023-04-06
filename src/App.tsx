@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.scss";
+import { Link } from "react-router-dom";
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -56,14 +57,13 @@ function App() {
             {oshiList.map((item: any, i: number) => {
               return (
                 <li key={i}>
-                  <a href={`detail/${item.id}`}>
+                  <Link to={`detail/${item.id}`}>
                     <div className="image">
                       <img src={item.imageUrl} alt={`${item.name}の画像`} />
                     </div>
                     <div className="name">{item.name}</div>
                     <div className="name_en">{item.name_en}</div>
-                    <div className="description">{item.description}</div>
-                  </a>
+                  </Link>
                 </li>
               );
             })}
@@ -98,8 +98,8 @@ function App() {
                 <textarea
                   name="description"
                   id=""
-                  cols="30"
-                  rows="10"
+                  cols={30}
+                  rows={10}
                   placeholder="推しへの愛を書けぇ！"
                   onChange={handleChange}
                   autoComplete="off"
@@ -107,8 +107,8 @@ function App() {
                 <textarea
                   name="externalLink"
                   id=""
-                  cols="30"
-                  rows="10"
+                  cols={30}
+                  rows={10}
                   placeholder="外部リンクをコンマ区切りで（※未実装なので現状ただのテキストエリア）"
                   onChange={handleChange}
                   autoComplete="off"

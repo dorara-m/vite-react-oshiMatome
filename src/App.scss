@@ -113,3 +113,35 @@
     }
   }
 }
+
+.detail-grid {
+  margin-right: auto;
+  margin-left: auto;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: "image name" "image text";
+  img {
+    max-width: 100%;
+    object-fit: cover;
+    grid-area: image;
+  }
+  .name {
+    grid-area: name;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  p {
+    grid-area: text;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #ddd;
+    // textareaの改行を反映⇣
+    white-space: pre-wrap;
+  }
+}
+
+.toTop {
+  display: block;
+  margin-top: 30px;
+}
