@@ -22,6 +22,13 @@ function App() {
       [event.target.name]: event.target.value,
     });
   };
+  // 外部リンクのときだけ別処理
+  const handleChangeExternalLink = (event: any) => {
+    setNewOshi({
+      ...newOshi,
+      [event.target.name]: externalLinkArray(event.target.value),
+    });
+  };
 
   // ローカルストレージ系
   const setLocalStorage = (key: string, value: any) => {
@@ -46,6 +53,10 @@ function App() {
     togglePopup();
   };
   // 外部リンクをコンマ区切りで配列にする処理かきたい
+  const externalLinkArray = (str: string) => {
+    const array = str.split(", ");
+    return array;
+  };
 
   return (
     <div className="App">
@@ -109,8 +120,8 @@ function App() {
                   id=""
                   cols={30}
                   rows={10}
-                  placeholder="※実装途中のため表示されません"
-                  onChange={handleChange}
+                  placeholder="外部urlをコンマ区切り「,」「半角スペース」を挟んで書いてね。改行はできないよ。"
+                  onChange={handleChangeExternalLink}
                   autoComplete="off"
                 ></textarea>
                 <input type="submit" value="追加" />

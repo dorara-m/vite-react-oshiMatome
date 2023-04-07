@@ -16,6 +16,17 @@ const Detail: React.FunctionComponent = () => {
         <div className="name_en">{pageData.name_en}</div>
         <p>{pageData.description}</p>
       </div>
+      {pageData.externalLink.length > 0 && (
+        <div className="externalLink">
+          {pageData.externalLink.map((item: string, i: number) => {
+            return (
+              <a target="_blank" href={item} key={i}>
+                外部リンク{i + 1}
+              </a>
+            );
+          })}
+        </div>
+      )}
 
       <Link to="/" className="toTop">
         <button>一覧に戻る</button>
