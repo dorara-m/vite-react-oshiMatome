@@ -121,7 +121,7 @@
   display: grid;
   grid-template-columns: 200px 1fr;
   grid-template-areas: "image name" "image name_en" "image text";
-  align-content: end;
+  grid-template-rows: repeat(2, max-content) 1fr;
   img {
     max-width: 100%;
     object-fit: cover;
